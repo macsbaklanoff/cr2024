@@ -33,3 +33,15 @@ E:\3\КР\cr2024\cr2024\obj\Debug\cr2024.csproj.CoreCompileInputs.cache
 E:\3\КР\cr2024\cr2024\obj\Debug\cr2024.exe
 E:\3\КР\cr2024\cr2024\obj\Debug\cr2024.pdb
 E:\3\КР\cr2024\cr2024\obj\Debug\cr2024.Form3.resources
+C:\Users\macsb\source\repos\cr2024(1)\cr2024\cr2024\bin\Debug\cr2024.exe.config
+C:\Users\macsb\source\repos\cr2024(1)\cr2024\cr2024\bin\Debug\cr2024.exe
+C:\Users\macsb\source\repos\cr2024(1)\cr2024\cr2024\bin\Debug\cr2024.pdb
+C:\Users\macsb\source\repos\cr2024(1)\cr2024\cr2024\obj\Debug\cr2024.csproj.AssemblyReference.cache
+C:\Users\macsb\source\repos\cr2024(1)\cr2024\cr2024\obj\Debug\cr2024.Form1.resources
+C:\Users\macsb\source\repos\cr2024(1)\cr2024\cr2024\obj\Debug\cr2024.Form2.resources
+C:\Users\macsb\source\repos\cr2024(1)\cr2024\cr2024\obj\Debug\cr2024.Form3.resources
+C:\Users\macsb\source\repos\cr2024(1)\cr2024\cr2024\obj\Debug\cr2024.Properties.Resources.resources
+C:\Users\macsb\source\repos\cr2024(1)\cr2024\cr2024\obj\Debug\cr2024.csproj.GenerateResource.cache
+C:\Users\macsb\source\repos\cr2024(1)\cr2024\cr2024\obj\Debug\cr2024.csproj.CoreCompileInputs.cache
+C:\Users\macsb\source\repos\cr2024(1)\cr2024\cr2024\obj\Debug\cr2024.exe
+C:\Users\macsb\source\repos\cr2024(1)\cr2024\cr2024\obj\Debug\cr2024.pdb

@@ -31,6 +31,7 @@ namespace cr2024
         public Form1()
         {
             InitializeComponent();
+            changeTable(); //обязательное появление пустого символа в таблице
         }
 
 
@@ -131,6 +132,7 @@ namespace cr2024
             //changeTable();
         }
         private void changeTable() {
+            dicttable.Clear();
             int rowsCount = dataGridView1.Rows.Count - 1, i;
             for (i = 0; i < rowsCount; i++)
             {
@@ -138,6 +140,7 @@ namespace cr2024
             }
             for (i = 0; i < textBox1.Text.Length; i++)
             {
+                if (dicttable.ContainsKey(textBox1.Text[i].ToString())) continue;
                 dicttable[textBox1.Text[i].ToString()] = i;
                 dataGridView1.Rows.Add(textBox1.Text[i].ToString());
             }
@@ -180,10 +183,14 @@ namespace cr2024
         {
             solve();
         }
+        private void messageerror()
+        {
+            MessageBox.Show("Неверная или отсутсвующая команда");
+        }
         private void solve() //решение (движение ленты)
         {
             string s = ""; //поиск символа в алфавите 
-            if (dict.ContainsKey(centercaretk))
+            if (dict.ContainsKey(centercaretk)) //есть ли на ленте символ, если нет, то реагировать как на пустоту
                 s = dict[centercaretk];
             if (!dicttable.ContainsKey(s))
                 s = "";
@@ -191,23 +198,20 @@ namespace cr2024
             if (dataGridView1[col, i].Value == null)
             {
                 run = false;
-                MessageBox.Show("Отсутствует команда");
+                messageerror();
                 return;
             }
             string comand = dataGridView1[col, i].Value.ToString();
-            if (int.TryParse(comand[comand.Length - 1].ToString(), out var number1)) //если хотим перейти в несуществующее состояние
-            {
-                if (number1 > columnscount)
-                {
-                    run = false;
-                    MessageBox.Show("Несуществующее состояние");
-                    return;
-                }
-            }
             if (comand.Length < 4)
             {
                 run = false;
-                MessageBox.Show("Неверная команда");
+                messageerror();
+                return;
+            }
+            if (!comand.Contains('>') && !comand.Contains('<') && !comand.Contains('.'))
+            {
+                run = false;
+                messageerror();
                 return;
             }
             dict[centercaretk] = comand[0].ToString();
@@ -228,11 +232,20 @@ namespace cr2024
             while (comand[comand.Length - k] != 'Q')
             {
                 ch += comand[comand.Length - k];
-                if (!int.TryParse(ch, out var number2))
+                if (!int.TryParse(ch, out var number1))
                 {
                     run = false;
-                    MessageBox.Show("Неверная команда");
+                    messageerror();
                     return;
+                }
+                if (int.TryParse(ch, out var number2))
+                {
+                    if (number2 > columnscount)
+                    {
+                        run = false;
+                        messageerror();
+                        return;
+                    }
                 }
                 k++;
             }
@@ -270,6 +283,7 @@ namespace cr2024
 
         private void button11_Click(object sender, EventArgs e) //загрузка таблицы
         {
+            
             OpenFileDialog open = new OpenFileDialog();
             if (open.ShowDialog() == DialogResult.Cancel)
                 return;
@@ -277,7 +291,12 @@ namespace cr2024
             string[] lines= File.ReadAllLines(filename);// читаем файл в массив строк
             textBox1.Text = lines[0].Split()[0]; //заполняем алфавит
             changeTable(); //чтобы появилось нужное кол-во строк для исключения ошибок индексации при заполнении таблицы из файла
-            for (int i = 0; i < int.Parse(lines[0].Split()[1]); i++) createcolumn(); //что бы появилось нужное кол-во столбцов для исключения ошибок индексации при заполнении таблицы из файла
+            while (columnscount > 1)
+            {
+                dataGridView1.Columns.RemoveAt(columnscount);
+                columnscount--;
+            }
+            for (int i = 1; i < int.Parse(lines[0].Split()[1]); i++) createcolumn(); //что бы появилось нужное кол-во столбцов для исключения ошибок индексации при заполнении таблицы из файла
             for (int i = 1; i < lines.Length; i++)
             {
 
@@ -294,6 +313,11 @@ namespace cr2024
         {
             Form3 form3 = new Form3(); //инструкция
             form3.Show();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
