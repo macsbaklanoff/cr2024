@@ -91,7 +91,7 @@ namespace cr2024
         }
         public void changedcell(string s)
         {
-            dict[cell] = s;
+            dict[cell] = s; //прием данных из второй формы
             draw(); //функция рисования
         }
 
@@ -111,11 +111,11 @@ namespace cr2024
 
         private void button4_Click(object sender, EventArgs e)
         {
-            createcolumn();
+            createcolumn(); //добавление столбца
         }
         private void button5_Click(object sender, EventArgs e)
         {
-            if (columnscount > 1)
+            if (columnscount > 1) //удаление столбца
             {
                 dataGridView1.Columns.RemoveAt(columnscount);
                 columnscount--;
@@ -158,7 +158,7 @@ namespace cr2024
         }
         private void button7_Click(object sender, EventArgs e)
         {
-            dict.Clear();
+            dict.Clear(); //очистка ленты
             draw();
         }
 
@@ -169,19 +169,20 @@ namespace cr2024
 
         private void button8_Click(object sender, EventArgs e)
         {
-            run = !run;
+            run = !run; //старт/стоп
             col = 1;
 
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (run) {
+            if (run) 
+            { //старт стоп
                 solve();
             }
         }
         private void button9_Click(object sender, EventArgs e)
         {
-            solve();
+            solve(); //шаг
         }
         private void messageerror()
         {
@@ -299,7 +300,6 @@ namespace cr2024
             for (int i = 1; i < int.Parse(lines[0].Split()[1]); i++) createcolumn(); //что бы появилось нужное кол-во столбцов для исключения ошибок индексации при заполнении таблицы из файла
             for (int i = 1; i < lines.Length; i++)
             {
-
                 string[] line = lines[i].Split();
                 if (line.Length == 4)
                 {
