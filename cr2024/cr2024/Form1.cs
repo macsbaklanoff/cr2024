@@ -215,6 +215,12 @@ namespace cr2024
                 messageerror();
                 return;
             }
+            if (comand[1] != '>' && comand[1] != '<' && comand[1] != '.')
+            {
+                run = false;
+                messageerror();
+                return;
+            }
             dict[centercaretk] = comand[0].ToString();
             if (comand[1] == '>')
             {
@@ -257,6 +263,7 @@ namespace cr2024
                 run = false;
                 draw();
                 MessageBox.Show("Программа завершена");
+                col = 1;
                 return;
             }
             draw();

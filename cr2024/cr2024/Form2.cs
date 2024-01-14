@@ -18,9 +18,9 @@ namespace cr2024
             InitializeComponent();
             form = form1;
             listBox1.Items.Add("");
-            foreach (char c in form.textBox1.Text)
+            foreach (char c in form.textBox1.Text) 
             {
-                listBox1.Items.Add(c);
+                listBox1.Items.Add(c); //добавление в лист всех символов из текстового поля
             }
         }
         
@@ -31,12 +31,12 @@ namespace cr2024
 
         private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (listBox1.SelectedItem == null)
+            if (listBox1.SelectedItem == null) //если ничего не выбрали
             {
                 MessageBox.Show("Выберите символ");
                 return;
             }
-            form.changedcell(listBox1.SelectedItem.ToString());
+            form.changedcell(listBox1.SelectedItem.ToString()); //выбранный символ отправляем в первую форму
             this.Close();
         }
     }
