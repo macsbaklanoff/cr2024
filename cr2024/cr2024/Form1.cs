@@ -170,7 +170,7 @@ namespace cr2024
         private void button8_Click(object sender, EventArgs e)
         {
             run = !run; //старт/стоп
-            col = 1;
+            //col = 1;
 
         }
         private void timer1_Tick(object sender, EventArgs e)
